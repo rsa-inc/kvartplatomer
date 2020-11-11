@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://objectEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.kvartplatomer.web.screens.object">
+    <data>
+        <instance id="objectDc"
+                  class="com.company.kvartplatomer.entity.Object">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="objectDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textField id="shortNameField" property="shortName"/>
+                <lookupField id="object_typeField" property="object_type"/>
+                <textField id="postIndexField" property="postIndex"/>
+                <textField id="descriptionField" property="description"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
