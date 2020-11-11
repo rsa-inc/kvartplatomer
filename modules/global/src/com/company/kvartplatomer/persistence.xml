@@ -4,5 +4,6 @@
 
         <class>com.company.kvartplatomer.entity.ServiceType</class>
         <class>com.company.kvartplatomer.entity.ServiceProvider</class>
+        <class>com.company.kvartplatomer.entity.Object</class>
     </persistence-unit>
 </persistence>
