@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://serviceProviderBrowse.caption"
+        focusComponent="serviceProvidersTable"
+        messagesPack="com.company.kvartplatomer.web.screens.serviceprovider">
+    <data readOnly="true">
+        <collection id="serviceProvidersDc"
+                    class="com.company.kvartplatomer.entity.ServiceProvider">
+            <view extends="_local">
+                <property name="serviceType" view="_minimal">
+                    <property name="stypeName"/>
+                </property>
+            </view>
+            <loader id="serviceProvidersDl">
+                <query>
+                    <![CDATA[select e from kvartplatomer_ServiceProvider e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="serviceProvidersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="serviceProvidersTable"
+                dataLoader="serviceProvidersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="serviceProvidersTable"
+                    width="100%"
+                    dataContainer="serviceProvidersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="serviceType"/>
+                <column id="pc"/>
+                <column id="inn"/>
+                <column id="url"/>
+                <column id="description"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="serviceProvidersTable.create"/>
+                <button id="editBtn" action="serviceProvidersTable.edit"/>
+                <button id="removeBtn" action="serviceProvidersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

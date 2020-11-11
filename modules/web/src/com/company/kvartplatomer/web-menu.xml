@@ -3,5 +3,7 @@
     <menu id="application-kvartplatomer" insertBefore="administration" caption="mainMsg://menu_config.application-kvartplatomer">
         <item screen="kvartplatomer_ServiceType.browse"
               caption="mainMsg://menu_config.kvartplatomer_ServiceType.browse"/>
+        <item screen="kvartplatomer_ServiceProvider.browse"
+              caption="mainMsg://menu_config.kvartplatomer_ServiceProvider.browse"/>
     </menu>
 </menu-config>
