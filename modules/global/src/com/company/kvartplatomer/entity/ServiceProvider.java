@@ -2,6 +2,7 @@ package com.company.kvartplatomer.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,14 +24,23 @@ public class ServiceProvider extends StandardEntity {
     @Column(name = "PC")
     private Integer pc;
 
-    @Column(name = "INN", unique = true)
-    private Integer inn;
+    @Column(name = "INN", unique = true, length = 10)
+    @Length(message = "Длина ИНН должна быть 10 символов", min = 10, max = 10)
+    private String inn;
 
     @Column(name = "URL")
     private String url;
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    public void setInn(String inn) {
+        this.inn = inn;
+    }
+
+    public String getInn() {
+        return inn;
+    }
 
     public String getDescription() {
         return description;
@@ -62,14 +72,6 @@ public class ServiceProvider extends StandardEntity {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public Integer getInn() {
-        return inn;
-    }
-
-    public void setInn(Integer inn) {
-        this.inn = inn;
     }
 
     public String getName() {

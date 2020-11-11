@@ -1,5 +1,6 @@
 package com.company.kvartplatomer.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 
 @Table(name = "KVARTPLATOMER_SERVICE_TYPE")
 @Entity(name = "kvartplatomer_ServiceType")
+@NamePattern("%s|stypeName")
 public class ServiceType extends StandardEntity {
     private static final long serialVersionUID = 1012134599303266995L;
 
