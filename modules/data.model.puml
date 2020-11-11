@@ -1,0 +1,71 @@
+@startuml
+
+class service_provider {
+name
+INN
+URL
+service_type <<REF>>
+PC
+description
+}
+
+class service_type {
+name
+short_name
+}
+
+class service_account {
+PaymentName <<Calc>>
+object <<REF>><<M>>
+organization <<REF>><<M>>
+INN <<Calc>>
+URL
+Account_Number
+Login
+Password
+AutoPay
+IsActive? <<Boolean>>
+}
+
+class object {
+name
+short_name
+object_type
+description
+}
+
+class bill{
+object
+current_month
+service_account
+--previous month--
+p_debt_sm
+p_accrued
+p_paid
+--current month--
+c_debt_sm
+c_accrued
+c_paid
+--
+payed ()
+}
+
+class payment{
+name
+service_account
+debt_sm
+accrued
+paid
+payment_date
+}
+
+
+
+service_provider --> service_type
+service_account --> service_provider
+service_account --> object
+payment --> service_account
+bill --> payment
+bill --> service_account
+
+@enduml
