@@ -6,5 +6,7 @@
         <item screen="kvartplatomer_ServiceProvider.browse"
               caption="mainMsg://menu_config.kvartplatomer_ServiceProvider.browse"/>
         <item screen="kvartplatomer_Object.browse" caption="mainMsg://menu_config.kvartplatomer_Object.browse"/>
+        <item screen="kvartplatomer_ServiceAccount.browse"
+              caption="mainMsg://menu_config.kvartplatomer_ServiceAccount.browse"/>
     </menu>
 </menu-config>
