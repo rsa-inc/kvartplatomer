@@ -1,0 +1,106 @@
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://billBrowse.caption"
+        focusComponent="table"
+        messagesPack="com.company.kvartplatomer.web.screens.bill">
+    <data>
+        <collection id="billsDc"
+                    class="com.company.kvartplatomer.entity.Bill">
+            <view extends="_local">
+                <property name="object" view="_minimal"/>
+                <property name="serviceAccount" view="_minimal">
+                    <property name="organization" view="_minimal"/>
+                    <property name="accountNumber"/>
+                </property>
+            </view>
+            <loader id="billsDl">
+                <query>
+                    <![CDATA[select e from kvartplatomer_Bill e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="billDc"
+                  class="com.company.kvartplatomer.entity.Bill">
+            <view extends="_local">
+                <property name="object" view="_minimal"/>
+                <property name="serviceAccount" view="_minimal">
+                    <property name="organization" view="_minimal"/>
+                    <property name="accountNumber"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <actions>
+        <action id="save" icon="icons/ok.png" caption="mainMsg://actions.Ok" shortcut="CTRL-ENTER"/>
+        <action id="cancel" icon="icons/cancel.png" caption="mainMsg://actions.Cancel" description="Esc"/>
+    </actions>
+    <dialogMode height="600" width="800"/>
+    <layout>
+        <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%">
+            <vbox id="lookupBox" expand="table" height="100%" margin="false,true,false,false" spacing="true">
+                <filter id="filter" applyTo="table" dataLoader="billsDl">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%"
+                            dataContainer="billsDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="month"/>
+                        <column id="serviceAccount.accountedObject"/>
+                        <column id="serviceAccount"/>
+                        <column id="c_accrued"/>
+                        <column id="c_paid"/>
+                        <column id="c_debt_sm"/>
+                        <column id="p_debt_sm"/>
+                        <column id="p_accrued"/>
+                        <column id="p_paid"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="table.create"/>
+                        <button id="editBtn" action="table.edit"/>
+                        <button id="removeBtn" action="table.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+                <hbox id="lookupActions" spacing="true" visible="false">
+                    <button action="lookupSelectAction"/>
+                    <button action="lookupCancelAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="editBox" height="100%" margin="false,false,false,true" expand="fieldGroupBox" spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <form id="form" dataContainer="billDc">
+                        <column width="350px">
+                            <textField id="monthField" property="month"/>
+                            <textField id="objectField" property="serviceAccount.accountedObject"/>
+
+                            <pickerField id="serviceAccountField" property="serviceAccount">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </pickerField>
+                            <textField id="c_accruedField" property="c_accrued"/>
+                            <textField id="c_paidField" property="c_paid"/>
+                            <textField id="c_debt_smField" property="c_debt_sm"/>
+                            <textField id="p_debt_smField" property="p_debt_sm"/>
+                            <textField id="p_accruedField" property="p_accrued"/>
+                            <textField id="p_paidField" property="p_paid"/>
+                        </column>
+                    </form>
+                </scrollBox>
+                <hbox id="actionsPane" spacing="true" visible="false">
+                    <button id="saveBtn" action="save"/>
+                    <button id="cancelBtn" action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>
