@@ -1,0 +1,4 @@
+alter table KVARTPLATOMER_BILL alter column OBJECT_ID rename to OBJECT_ID__U07677 ^
+alter table KVARTPLATOMER_BILL drop constraint FK_KVARTPLATOMER_BILL_ON_OBJECT ;
+drop index IDX_KVARTPLATOMER_BILL_ON_OBJECT ;
+alter table KVARTPLATOMER_BILL add column ACCOUNTED_OBJECT varchar(36) ;

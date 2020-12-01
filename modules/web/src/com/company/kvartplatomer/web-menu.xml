@@ -8,5 +8,6 @@
         <item screen="kvartplatomer_Object.browse" caption="mainMsg://menu_config.kvartplatomer_Object.browse"/>
         <item screen="kvartplatomer_ServiceAccount.browse"
               caption="mainMsg://menu_config.kvartplatomer_ServiceAccount.browse"/>
+        <item screen="kvartplatomer_Bill.browse" caption="mainMsg://menu_config.kvartplatomer_Bill.browse"/>
     </menu>
 </menu-config>
