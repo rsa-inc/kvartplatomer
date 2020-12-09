@@ -1,9 +1,12 @@
 package com.company.kvartplatomer.entity;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.global.DataManager;
 
+import javax.inject.Inject;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 @Table(name = "KVARTPLATOMER_SERVICE_ACCOUNT")
 @Entity(name = "kvartplatomer_ServiceAccount")
@@ -90,5 +93,15 @@ public class ServiceAccount extends StandardEntity {
 
     public void setAccountedObject(Object accountedObject) {
         this.accountedObject = accountedObject;
+    }
+
+    @Inject
+    private DataManager dataManager;
+    public Optional<ServiceAccount> loadServiceAccountIsActiveOnly(){
+        return dataManager.load(ServiceAccount.class)
+                .query("select e from kvartplatomer_ServiceAccount e " +
+                        "where e.kvartplatomer_ServiceAccount is not null")
+                .optional();
+
     }
 }

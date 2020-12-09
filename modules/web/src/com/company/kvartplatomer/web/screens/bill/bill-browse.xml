@@ -49,6 +49,8 @@
                         <action id="create" type="create"/>
                         <action id="edit" type="edit"/>
                         <action id="remove" type="remove"/>
+                        <action id="mycopy" caption="copy" icon="COPY" trackSelection="true"/>
+                        <action id="generateBills" caption="generate bills"/>
                     </actions>
                     <columns>
                         <column id="month"/>
@@ -67,6 +69,8 @@
                         <button id="createBtn" action="table.create"/>
                         <button id="editBtn" action="table.edit"/>
                         <button id="removeBtn" action="table.remove"/>
+                        <button id="mycopy" action="table.mycopy"/>
+                        <button id="generateBills" action="table.generateBills" />
                     </buttonsPanel>
                 </groupTable>
                 <hbox id="lookupActions" spacing="true" visible="false">

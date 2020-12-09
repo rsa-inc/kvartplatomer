@@ -1,27 +1,32 @@
 package com.company.kvartplatomer.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.chile.core.annotations.NumberFormat;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.*;
-import java.time.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "KVARTPLATOMER_BILL")
 @Entity(name = "kvartplatomer_Bill")
+@NamePattern("%s %s|month,object")
 public class Bill extends StandardEntity {
     private static final long serialVersionUID = 3136281376176963494L;
 
     @Column(name = "MONTH_")
     @NumberFormat(pattern = "######")
-    private java.lang.Integer month;
+    private Integer month;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "accounted_Object")
+    @MetaProperty
+    @Transient
     private ServiceAccount object;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SERVICE_ACCOUNT_ID")
+    @MetaProperty
+    @Transient
     private ServiceAccount serviceAccount;
 
     @Column(name = "C_ACCRUED")
@@ -41,6 +46,15 @@ public class Bill extends StandardEntity {
 
     @Column(name = "P_PAID")
     private Double p_paid;
+
+    public Integer getMonth() {
+        return month
+        //return 202010
+        //int monthValue = LocalDate.now().getMonthValue();
+        //int yearValue = LocalDate.now().getYear();
+        //return yearValue*100+monthValue
+                ;
+    }
 
 
     public ServiceAccount getObject() {
@@ -103,8 +117,4 @@ public class Bill extends StandardEntity {
         return serviceAccount;
     }
 
-    public int getMonth() {
-        return 202010;
-        //return java.time.
-    }
 }

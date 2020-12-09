@@ -7,7 +7,9 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Table(name = "KVARTPLATOMER_SERVICE_PROVIDER")
+@Table(name = "KVARTPLATOMER_SERVICE_PROVIDER", indexes = {
+        @Index(name = "IDX_KVARTPLATOMER_SERVICE_PROVIDER_UNQ", columnList = "INN", unique = true)
+})
 @Entity(name = "kvartplatomer_ServiceProvider")
 @NamePattern("%s|name")
 public class ServiceProvider extends StandardEntity {
