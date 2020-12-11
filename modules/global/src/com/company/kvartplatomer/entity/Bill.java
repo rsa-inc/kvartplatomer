@@ -1,19 +1,21 @@
 package com.company.kvartplatomer.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.chile.core.annotations.NumberFormat;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
-import java.time.*;
+import java.time.LocalDate;
 
 @Table(name = "KVARTPLATOMER_BILL")
 @Entity(name = "kvartplatomer_Bill")
+@NamePattern("%s %s|id,month")
 public class Bill extends StandardEntity {
     private static final long serialVersionUID = 3136281376176963494L;
 
     @Column(name = "MONTH_")
     @NumberFormat(pattern = "######")
-    private java.lang.Integer month;
+    private Integer month=LocalDate.now().getYear()*100+LocalDate.now().getMonthValue();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accounted_Object")
@@ -41,6 +43,10 @@ public class Bill extends StandardEntity {
 
     @Column(name = "P_PAID")
     private Double p_paid;
+
+    public Integer getMonth() {
+        return month;
+    }
 
 
     public ServiceAccount getObject() {
@@ -103,8 +109,4 @@ public class Bill extends StandardEntity {
         return serviceAccount;
     }
 
-    public int getMonth() {
-        return 202010;
-        //return java.time.
-    }
 }

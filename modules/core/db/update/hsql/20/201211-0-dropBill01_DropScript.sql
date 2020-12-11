@@ -1,0 +1,1 @@
+drop table KVARTPLATOMER_BILL__U73930 if exists cascade ;
