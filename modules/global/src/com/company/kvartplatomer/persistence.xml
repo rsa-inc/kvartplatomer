@@ -6,5 +6,6 @@
         <class>com.company.kvartplatomer.entity.ServiceProvider</class>
         <class>com.company.kvartplatomer.entity.Object</class>
         <class>com.company.kvartplatomer.entity.ServiceAccount</class>
+        <class>com.company.kvartplatomer.entity.Bill</class>
     </persistence-unit>
 </persistence>
