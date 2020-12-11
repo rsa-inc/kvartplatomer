@@ -1,5 +1,6 @@
 package com.company.kvartplatomer.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "KVARTPLATOMER_SERVICE_ACCOUNT")
 @Entity(name = "kvartplatomer_ServiceAccount")
+@NamePattern("%s %s|organization,accountedObject")
 public class ServiceAccount extends StandardEntity {
     private static final long serialVersionUID = -3838763336942034464L;
 
@@ -91,4 +93,6 @@ public class ServiceAccount extends StandardEntity {
     public void setAccountedObject(Object accountedObject) {
         this.accountedObject = accountedObject;
     }
+
+
 }

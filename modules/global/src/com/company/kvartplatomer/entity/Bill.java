@@ -15,10 +15,10 @@ public class Bill extends StandardEntity {
     @NumberFormat(pattern = "######")
     private java.lang.Integer month;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accounted_Object")
     private ServiceAccount object;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SERVICE_ACCOUNT_ID")
