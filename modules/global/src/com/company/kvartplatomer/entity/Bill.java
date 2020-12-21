@@ -15,7 +15,7 @@ public class Bill extends StandardEntity {
 
     @Column(name = "MONTH_")
     @NumberFormat(pattern = "######")
-    private Integer month=LocalDate.now().getYear()*100+LocalDate.now().getMonthValue();
+    private Integer month = LocalDate.now().getYear() * 100 + LocalDate.now().getMonthValue();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accounted_Object")
@@ -44,10 +44,22 @@ public class Bill extends StandardEntity {
     @Column(name = "P_PAID")
     private Double p_paid;
 
+    @Column(name = "IS_PAID")
+    private Boolean isPaid;
+
+    public Boolean getIsPaid() {
+        return isPaid;
+    }
+
+    public void setIsPaid(Boolean isPaid) {
+        this.isPaid = isPaid;
+    }
+
     public Integer getMonth() {
         return month;
     }
 
+    public void setMonth(Integer month) { this.month=month;}
 
     public ServiceAccount getObject() {
         return object;
@@ -61,8 +73,9 @@ public class Bill extends StandardEntity {
         return p_paid;
     }
 
-    public void setP_paid(Double p_paid) {
+    public Bill setP_paid(Double p_paid) {
         this.p_paid = p_paid;
+        return null;
     }
 
     public Double getP_accrued() {
@@ -108,5 +121,6 @@ public class Bill extends StandardEntity {
     public ServiceAccount getServiceAccount() {
         return serviceAccount;
     }
+
 
 }

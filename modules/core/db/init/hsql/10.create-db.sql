@@ -98,6 +98,7 @@ create table KVARTPLATOMER_BILL (
     P_DEBT_SM double precision,
     P_ACCRUED double precision,
     P_PAID double precision,
+    IS_PAID Contain information about paid bill or not,
     --
     primary key (ID)
 )^
