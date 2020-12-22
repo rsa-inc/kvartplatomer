@@ -55,12 +55,13 @@
                         <column id="month"/>
                         <!--column id="serviceAccount.accountedObject"/-->
                         <column id="serviceAccount"/>
-                        <column id="c_accrued" />
+                        <column id="c_accrued"/>
                         <column id="c_paid"/>
                         <column id="c_debt_sm"/>
                         <column id="p_debt_sm"/>
                         <column id="p_accrued"/>
                         <column id="p_paid"/>
+                        <column id="isPaid"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -82,7 +83,6 @@
                         <column width="250px">
                             <textField id="monthField" property="month"/>
                             <textField id="objectField" property="serviceAccount.accountedObject"/>
-
                             <pickerField id="serviceAccountField" property="serviceAccount">
                                 <actions>
                                     <action id="lookup" type="picker_lookup"/>
@@ -95,6 +95,7 @@
                             <textField id="p_debt_smField" property="p_debt_sm"/>
                             <textField id="p_accruedField" property="p_accrued"/>
                             <textField id="p_paidField" property="p_paid"/>
+                            <checkBox id="isPaidField" property="isPaid"/>
                         </column>
                     </form>
                 </scrollBox>

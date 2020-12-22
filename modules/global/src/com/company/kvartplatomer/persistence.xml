@@ -7,5 +7,6 @@
         <class>com.company.kvartplatomer.entity.Object</class>
         <class>com.company.kvartplatomer.entity.ServiceAccount</class>
         <class>com.company.kvartplatomer.entity.Bill</class>
+        <class>com.company.kvartplatomer.entity.BillHistory</class>
     </persistence-unit>
 </persistence>
